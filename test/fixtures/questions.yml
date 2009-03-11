@@ -1,0 +1,13 @@
+# Read about fixtures at http://ar.rubyonrails.org/classes/Fixtures.html
+
+one:
+  activity_id: 1
+  prompt: MyString
+  default_response: MyString
+  uuid: MyString
+
+two:
+  activity_id: 1
+  prompt: MyString
+  default_response: MyString
+  uuid: MyString

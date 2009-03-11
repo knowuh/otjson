@@ -1,0 +1,70 @@
+
+## GOALS
+
+Edit and view an activity page
+
+* Activity has 
+	o list of elements 
+		o (html-text element?)
+		o question (q1)
+			o prompt "what do you think blah blah"
+			o response (empty input)
+		o question
+		o something else  "when you were you were thinking about how this worked, you said 'blah blah (answer from q1)'
+		
+
+Example:
+	colors are great.  blah blah blah.
+	<div class="question" id="234234">
+		<div class="prompt">whats your favorite color?</div>
+		<div class="default response"></div>
+		<div id="response"></div>
+	</div>
+	
+
+## Models
+	Activity
+		owner_id
+		name
+		xhtml
+		uuid
+	Question
+		activity_id
+		prompt
+		default_response
+		uuid
+	Response
+		uuid
+		owner_id
+		question_id
+	Owner
+		first_name
+		last_name
+		uuid
+
+./script/generate model activity owner_id:integer name:string xhtml:text uuid:string
+./script/generate model question activity_id:integer prompt:string default_response:string uuid:string
+./script/generate model response owner_id:integer question_id:integer uuid:string
+./script/generate model Owner first_name:string last_name:string uuid:string
+
+Question 1:
+	if you are using a WYSIWG (FCK, YUI Editor, TinyMCE) Editor, how can you insert something which is a custom object?
+	
+	Large area for formatted text, but drag things into the editor.  
+		You want to be able to edit the properties of these elements in the GUI.
+		Editor can render both HTML and Plain text, but is not likely to render a graph, yet.
+		
+	Back into the OTML <object refid="sdfsdfdsf" />
+
+
+
+
+Also we would like to be able to reference the answers to questions
+	<div class="question" id="1234">
+		<div class="answer" id="23433">
+			<div class="stad"></div>
+		</div>
+	</div>
+	
+misc concepts:
+	- editing mode / vs running mode

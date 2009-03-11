@@ -1,0 +1,15 @@
+<h1>Editing owner</h1>
+UUID: <%= @owner.uuid %>
+<% form_for(@owner) do |f| %>
+  <%= f.error_messages %>
+	<%= f.label :first_name, "First Name" %>
+	<%= f.text_field :first_name %>
+	<%= f.label :last_name, "First Name" %>
+	<%= f.text_field :last_name %>
+  <p>
+    <%= f.submit "Update" %>
+  </p>
+<% end %>
+
+<%= link_to 'Show', @owner %> |
+<%= link_to 'Back', owners_path %>
