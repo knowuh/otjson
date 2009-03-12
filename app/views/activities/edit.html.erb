@@ -1,3 +1,4 @@
+<% javascript_include_tag :all %>
 <script type="text/javascript" src="/javascripts/tiny_mce/tiny_mce.js"></script>
 <script type="text/javascript">
 tinyMCE.init({
@@ -18,8 +19,11 @@ tinyMCE.init({
 </script>
 
 <h1>Editing activity <% @activity.name %> </h1>
-<div class="new_question">add question</div>
-	
+
+<%= image_tag "piper_64x64.jpg" %>
+
+<div class="new_question" id="1234567890">add question</div>
+<%= draggable_element("1234567890", :ghosting=>true, :revert=>true) %>
 
 <% form_for(@activity) do |f| %>
   <%= f.error_messages %>
