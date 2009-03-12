@@ -1,0 +1,67 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01//EN"
+   "http://www.w3.org/TR/html4/strict.dtd">
+
+<html lang="en">
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+	<title>script-test</title>
+	<meta name="generator" content="TextMate http://macromates.com/">
+	<meta name="author" content="Noah Paessel">
+	<!-- Date: 2009-03-11 -->
+	<link rel="stylesheet" href="/stylesheets/screen.css" type="text/css" media="screen" title="no title" charset="utf-8">
+	<link rel="stylesheet" href="/stylesheets/scaffold.css" type="text/css" media="screen" title="no title" charset="utf-8">
+	<script src="/javascripts/prototype.js" type="text/javascript" charset="utf-8"></script>
+	<script src="/javascripts/jester.js" type="text/javascript" charset="utf-8"></script>
+	
+</head>
+<body>
+	This document contains a div which is a stub for an activity<br/>
+	It uses the <a href="http://www.prototypejs.org/2007/4/2/jester-activeresource-for-prototype" title="Prototype JavaScript framework: Jester:  ActiveResource for Prototype">jester javascript library</a>
+	
+	Right now the div looks like this: <br/>
+	
+	<code>
+		&lt;div class=&quot;activity&quot; id=&quot;1&quot;&gt;&lt;/div&gt;
+	</code><br/>
+	
+	
+	Here is its is:<br/>
+	<div class="activity" id="1"></div>
+	<br/>
+
+	Click this link to fetch the xhtml from the Rest Resource: <br/>
+	<a id="clickable" class="clickable">FETCH</a> <br/>
+	
+	<div id="log"></div>
+	<script type="text/javascript" charset="utf-8">
+		Resource.model("Question")
+		Resource.model("Activity")
+		
+		// find classes of type '.activity' 
+		// and then dynamically load them as ActiveResources
+		function load_stubs() {
+			var activity_stubs = $$('.activity')
+			activity_stubs.each(function(element) {
+				activity = Activity.find(element.id,load_activity)
+			});
+		}
+		
+		var clickable = $('clickable')
+		clickable.observe('click', load_stubs); 
+		
+		// replace the stubbed activities with restfully fetched resources
+		function load_activity(activity) {
+			var myTemplate = new Template('<div class="activity" id=#{id}>#{xhtml}</div>'); 
+			$('' + activity.id).replace(myTemplate.evaluate(activity));
+			$('' + activity.id).addClassName('obviated')
+			$('log').append
+		}
+		function log(message) {
+			$('log').append(message)
+		}
+		
+	
+	</script>
+	
+</body>
+</html>

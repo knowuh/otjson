@@ -52,16 +52,4 @@ a:hover { color: #fff; background-color:#000; }
   list-style: square;
 }
 
-.new_question {
-  width: 100px;
-  display: block;
-  border-style: dashed;
-  border-width: 1px;
-  border-color: gray;
-}
-
-.otjason_view_activity .new_question {
-  background-color: #0AA;
-  padding: 4px;
-}
 

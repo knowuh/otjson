@@ -1,0 +1,23 @@
+.new_question {
+  width: 100px;
+  display: block;
+  border-style: dashed;
+  border-width: 1px;
+  border-color: gray;
+}
+
+.otjason_view_activity .new_question {
+  background-color: #0AA;
+  padding: 4px;
+}
+
+.activity {
+	display: block;
+	border-style: dashed;
+	border-width: 1px;
+	background-color: #FFFFFF;
+}
+.clickable {
+	background-color:	#AA1;
+	font-size: 14px;
+}
