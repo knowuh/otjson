@@ -7,7 +7,8 @@ var QuestionDialog = {
 
 		// Get the selected contents as text and place it in the input
 		f.prompt.value = tinyMCEPopup.editor.selection.getContent({format : 'text'});
-		f.default_response.value = tinyMCEPopup.getWindowArg('some_custom_arg');
+		f.default_response.value = tinyMCEPopup.getWindowArg('default_response');
+		f.prompt.value = tinyMCEPopup.getWindowArg('prompt');
 	},
 
 	insert : function() {
@@ -25,4 +26,4 @@ var QuestionDialog = {
 	}
 };
 
-tinyMCEPopup.onInit.add(ExampleDialog.init, ExampleDialog);
+tinyMCEPopup.onInit.add(QuestionDialog.init, QuestionDialog);

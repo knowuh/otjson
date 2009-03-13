@@ -33,5 +33,12 @@
 .clickable {
 	background-color:	#AA1;
 	font-size: 14px;
+}
 
-.disabled {disabled:true} 
+.disabled {
+	editable: false;
+	enabled: false;
+	disabled: true;
+	background-color: #444444;
+	
+} 

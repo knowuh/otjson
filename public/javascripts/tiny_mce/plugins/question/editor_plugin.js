@@ -33,7 +33,8 @@
 					inline : 1
 				}, {
 					plugin_url : url, // Plugin absolute URL
-					some_custom_arg : 'custom arg' // Custom argument
+					prompt : params.prompt,
+					default_response : params.default_response
 				});
 			});
 			
@@ -49,12 +50,30 @@
 			});
 
 			// Add a node change handler, selects the button in the UI when a image is selected
-			ed.onNodeChange.add(function(ed, cm, n) {
-				cm.setActive('question', n.nodeName == 'IMG');
+			ed.onNodeChange.add(function(ed, cm, n, o) {
+				cm.setActive('question', n.class == 'question');
 			});
 			
+			ed.onKeyUp.add(function(ed, e) {
+			   console.debug('Key up event: ' + e.keyCode);
+				console.debug('key up event: ' + e.element().class_name);
+			});
+
+			
+			
 			ed.onDblClick.add(function(ed, e) {
-			   console.log('Double click event: ' + e.target.nodeName);
+				console.log('Double click event: ' + e.target.nodeName);
+				question = Question.find(e.target.id);
+				ed.windowManager.open({
+					file : url + '/dialog.htm',
+					width : 320 + parseInt(ed.getLang('question.delta_width', 0)),
+					height : 120 + parseInt(ed.getLang('question.delta_height', 0)),
+					inline : 1
+				}, {
+					plugin_url : url, // Plugin absolute URL
+					prompt : question.prompt,
+					default_response : question.default_response
+				});
 			});
 			
 			ed.onInit.add(function() {

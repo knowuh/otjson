@@ -21,7 +21,7 @@
 			'id': q.id,
 			'class': 'question', 
 		}).update('<br/>Q:' + q.prompt + '<br/>');
-		console.log('question_id is ' + q.id);
+
 		var responseForm = generateResponseForm(q).wrap(view_question);
 		element.insert({ before: responseForm });
 		element.remove();
@@ -29,33 +29,31 @@
 
 
 	function generateResponseForm(question) {
-		console.log('question');
 		var response = Response.create({response_text : question.default_response, question_id : question.id});
-		
-		console.log(response.errors)
 		var input = new Element('input', {
 			'type' : 'text',
 			'value' : response.response_text,
-			'id' : response.id
+			'id' : response.id,
+			'class' : 'response'
 		});
 
-		var submit = new Element('div', {
-			'type' : 'submit'
-		}).update("complete");
+		var submit = new Element('a', {
+			'type' : 'submit',
+			'class' : 'submit'
+		}).update("answer");
 		
 		var form = new Element ('form');
 		input.wrap(form);
 		submit.wrap(form);
-		input.observe('change',function(e) {
-			console.log(input.value);
-			response.response_text = input.value;
-			response.save();
-		});
+		// input.observe('change',function(e) {
+		// 		response.response_text = input.value;
+		// 		response.save();
+		// 	});
 		
 		submit.observe('click',function(e) {
-			response.response_text = input.value;
-			response.save();
-			input.toggleClassName('disabled')
+			response.save(function() {
+				submit.update('update answer');
+			});
 		});
 		return form;
 	}
