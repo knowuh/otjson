@@ -1,4 +1,8 @@
 class QuestionsController < ApplicationController
+  
+  # protect_from_forgery :secret => '!jestertronixx', :only => [:update, :delete, :create]
+  skip_before_filter :verify_authenticity_token
+  
   # GET /questions
   # GET /questions.xml
   def index

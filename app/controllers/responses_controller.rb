@@ -1,6 +1,9 @@
 class ResponsesController < ApplicationController
   # GET /responses
   # GET /responses.xml
+  
+  skip_before_filter :verify_authenticity_token
+    
   def index
     @responses = Response.find(:all)
 
