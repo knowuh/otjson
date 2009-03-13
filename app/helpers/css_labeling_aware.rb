@@ -21,7 +21,8 @@ module CssLabelingAware
   end
   
   def css_id()
-    [name_space_prefix,self.uuid].join("_")
+    return "#{self.id}"
+    # [name_space_prefix,self.uuid].join("_")
   end
     
 end
