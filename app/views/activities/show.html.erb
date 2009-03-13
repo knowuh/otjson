@@ -16,50 +16,47 @@
 
 	function replace_question(element) {
 		var q = Question.find(element.id)
-		// 	
-		// var markup = '<div class="question" id="'+q.id+'"><br/>Q:' + q.prompt + '<br/>';
-		// markup += generateResponseForm(q);
-		// markup += '</div>';
+
 		var view_question = new Element('div', {
 			'id': q.id,
 			'class': 'question', 
 		}).update('<br/>Q:' + q.prompt + '<br/>');
+		console.log('question_id is ' + q.id);
 		var responseForm = generateResponseForm(q).wrap(view_question);
 		element.insert({ before: responseForm });
 		element.remove();
 	}
 
+
 	function generateResponseForm(question) {
-		var response = Response.build({question_id: question.id})
-		// var template = new Template(
-		// 		'<div class="response" id="#{id}">' +
-		// 		'<form id="answer">' +
-		// 		'	<input type="text" value="#{response_text}"/><br/>' +
-		// 		'	<input type="submit"/>' +
-		// 		'</form>'
-		// 	);
-		// response.response_text = question.default_response;
-		// 	return template.evaluate(response);
+		console.log('question');
+		var response = Response.create({response_text : question.default_response, question_id : question.id});
+		
+		console.log(response.errors)
 		var input = new Element('input', {
 			'type' : 'text',
-			'value' : question.default_response,
+			'value' : response.response_text,
 			'id' : response.id
 		});
 
-		var submit = new Element('input', {
+		var submit = new Element('div', {
 			'type' : 'submit'
-		});
-		var form = new Element ('form');
-		// submit.wrap(form);
-		// form.observe('submit',function() {
-		// 	var theId = '' + response.id;
-		// 	//response.response_text = $(theId).value;
-		// 	//response.save();
-		// 	//alert('your response has been updated ' + theId);
-		//});
+		}).update("complete");
 		
+		var form = new Element ('form');
 		input.wrap(form);
 		submit.wrap(form);
+		input.observe('change',function(e) {
+			console.log(input.value);
+			response.response_text = input.value;
+			response.save();
+		});
+		
+		submit.observe('click',function(e) {
+			response.response_text = input.value;
+			response.save();
+			input.toggleClassName('disabled')
+		});
 		return form;
 	}
 </script>

@@ -6,6 +6,8 @@
 
 <% for response in @responses %>
   <tr>
+	<td> <%= response.id %></td>
+	<td> <%= response.response_text %></td>
     <td><%= link_to 'Show', response %></td>
     <td><%= link_to 'Edit', edit_response_path(response) %></td>
     <td><%= link_to 'Destroy', response, :confirm => 'Are you sure?', :method => :delete %></td>

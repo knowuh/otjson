@@ -1,7 +1,7 @@
 tinyMCEPopup.requireLangPack();
 Resource.model("Question");
 
-var ExampleDialog = {
+var QuestionDialog = {
 	init : function() {
 		var f = document.forms[0];
 
@@ -19,15 +19,9 @@ var ExampleDialog = {
 	
 		var imgurl = tinyMCEPopup.getWindowArg("plugin_url") + '/img/qtext.gif"' ;
 		var resp_text = '<img class="question_edit_button" src="' + imgurl + '" id="' + question.id + '"/><br/>';
-		// resp_text += prompt;
-		// resp_text += '<span class="default_response">';
-		// resp_text += default_response;
-		// resp_text += '</span></span>';
 		
-		//h = h.replace(/<object([^>]*)>/gi, '<span class="mceItemObject" $1>');
 		tinyMCEPopup.editor.execCommand('mceInsertContent', false, resp_text);
 		tinyMCEPopup.close();
-		$('question_edit_button').observe('click', function(e) { alert('clicked'); });
 	}
 };
 

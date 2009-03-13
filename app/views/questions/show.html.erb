@@ -1,3 +1,18 @@
+id: <%= @question.id %> <br/>
+prompt: <%= @question.prompt %> <br/>
+default_answer: <%= @question.prompt %> <br/>
+<% if @question.activity %>
+	Activity: <%= link_to @question.activity.name, :controller => "activities", :action => "show", :id => @question.activity_id %> <br/>
+<% end %>
 
+<% if @question.responses.size > 0 %>
+	Responses:
+	<ul>
+	<% for response in @question.responses %>
+		<li> <%= response.response_text %> </li>
+	<% end %>
+	</ul>
+<% end %>
+<br/>
 <%= link_to 'Edit', edit_question_path(@question) %> |
 <%= link_to 'Back', questions_path %>

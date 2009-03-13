@@ -53,6 +53,10 @@
 				cm.setActive('question', n.nodeName == 'IMG');
 			});
 			
+			ed.onDblClick.add(function(ed, e) {
+			   console.log('Double click event: ' + e.target.nodeName);
+			});
+			
 			ed.onInit.add(function() {
 				if (ed.settings.content_css !== false)
 					ed.dom.loadCSS(url + "/css/content.css");
@@ -88,6 +92,8 @@
 				version : "1.0"
 			};
 		}
+
+		
 	});
 
 	// Register plugin
