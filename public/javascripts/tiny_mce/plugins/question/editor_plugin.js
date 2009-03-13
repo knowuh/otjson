@@ -43,6 +43,11 @@
 			ed.onNodeChange.add(function(ed, cm, n) {
 				cm.setActive('question', n.nodeName == 'IMG');
 			});
+			
+			ed.onInit.add(function() {
+				if (ed.settings.content_css !== false)
+					ed.dom.loadCSS(url + "/css/content.css");
+			});
 		},
 
 		/**

@@ -1,0 +1,14 @@
+.question {
+  border-style: dashed;
+  border-width: 1px;
+  border-color: gray;
+  background-color: #AAAAAA;
+}
+.prompt {
+	background-color: #FFDDDD;
+	clear: right;
+}
+.default_response {
+	background-color: #DDFFFF;
+	cear: right;
+}
