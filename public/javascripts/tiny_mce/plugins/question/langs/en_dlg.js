@@ -1,3 +1,3 @@
-tinyMCE.addI18n('en.question_dlg',{
-	title : 'Create a new question'
+tinyMCE.addI18n('en.example_dlg',{
+	title : 'create a new question'
 });
