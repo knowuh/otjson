@@ -6,6 +6,8 @@
 
 <% for question in @questions %>
   <tr>
+	<td> <%= question.prompt %> </td>
+	<td> <%= question.default_response %> </td>
     <td><%= link_to 'Show', question %></td>
     <td><%= link_to 'Edit', edit_question_path(question) %></td>
     <td><%= link_to 'Destroy', question, :confirm => 'Are you sure?', :method => :delete %></td>

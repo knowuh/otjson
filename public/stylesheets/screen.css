@@ -6,6 +6,19 @@
   border-color: gray;
 }
 
+.question {
+  border-style: dashed;
+  border-width: 1px;
+  border-color: gray;
+  background-color: #CCCCCC;
+}
+.prompt {
+	background-color: #FFDDDD;
+}
+.default_response {
+	background-color: #DDFFFF;
+}
+
 .otjason_view_activity .new_question {
   background-color: #0AA;
   padding: 4px;
@@ -20,4 +33,4 @@
 .clickable {
 	background-color:	#AA1;
 	font-size: 14px;
-}
+

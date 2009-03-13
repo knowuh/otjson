@@ -1,7 +1,65 @@
 
+
 <div id="<%= @activity.css_id%>" class="<%= @activity.css_class_view %>">
 	<%= @activity.xhtml %>
 </div>
 
 <%= link_to "List", :action => "index" %> |
 <%= link_to "Edit", :action => "edit" %> 
+
+<script type="text/javascript" charset="utf-8">
+	var questions = $$('.question_edit_button');
+	questions.each(function(e) {
+		replace_question(e);
+	});
+
+
+	function replace_question(element) {
+		var q = Question.find(element.id)
+		// 	
+		// var markup = '<div class="question" id="'+q.id+'"><br/>Q:' + q.prompt + '<br/>';
+		// markup += generateResponseForm(q);
+		// markup += '</div>';
+		var view_question = new Element('div', {
+			'id': q.id,
+			'class': 'question', 
+		}).update('<br/>Q:' + q.prompt + '<br/>');
+		var responseForm = generateResponseForm(q).wrap(view_question);
+		element.insert({ before: responseForm });
+		element.remove();
+	}
+
+	function generateResponseForm(question) {
+		var response = Response.build({question_id: question.id})
+		// var template = new Template(
+		// 		'<div class="response" id="#{id}">' +
+		// 		'<form id="answer">' +
+		// 		'	<input type="text" value="#{response_text}"/><br/>' +
+		// 		'	<input type="submit"/>' +
+		// 		'</form>'
+		// 	);
+		// response.response_text = question.default_response;
+		// 	return template.evaluate(response);
+		var input = new Element('input', {
+			'type' : 'text',
+			'value' : question.default_response,
+			'id' : response.id
+		});
+
+		var submit = new Element('input', {
+			'type' : 'submit'
+		});
+		var form = new Element ('form');
+		// submit.wrap(form);
+		// form.observe('submit',function() {
+		// 	var theId = '' + response.id;
+		// 	//response.response_text = $(theId).value;
+		// 	//response.save();
+		// 	//alert('your response has been updated ' + theId);
+		//});
+		
+		input.wrap(form);
+		submit.wrap(form);
+		return form;
+	}
+</script>

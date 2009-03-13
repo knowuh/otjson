@@ -9,7 +9,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20090311201455) do
+ActiveRecord::Schema.define(:version => 20090313181032) do
 
   create_table "activities", :force => true do |t|
     t.integer  "owner_id"
@@ -43,6 +43,7 @@ ActiveRecord::Schema.define(:version => 20090311201455) do
     t.string   "uuid"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.string   "response_text"
   end
 
 end

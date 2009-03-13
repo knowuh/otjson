@@ -12,7 +12,6 @@
 	<link rel="stylesheet" href="/stylesheets/scaffold.css" type="text/css" media="screen" title="no title" charset="utf-8">
 	<script src="/javascripts/prototype.js" type="text/javascript" charset="utf-8"></script>
 	<script src="/javascripts/jester.js" type="text/javascript" charset="utf-8"></script>
-
 	<script type="text/javascript" src="/javascripts/tiny_mce/tiny_mce.js"></script>
 	<script type="text/javascript">
 	tinyMCE.init({
@@ -29,9 +28,15 @@
 <body>
 <form action="script-test_submit" method="get" accept-charset="utf-8">
 	
-	<textarea name="Name" rows="8" cols="40"></textarea>
+	<textarea name="Name" rows="8" cols="40">something</textarea>
 </form>
-	This document contains a div which is a stub for an activity<br/>
+
+	
+	This document contains a div 
+	<object width="320" height="240" 
+
+	</object>
+	<br/>
 	It uses the <a href="http://www.prototypejs.org/2007/4/2/jester-activeresource-for-prototype" title="Prototype JavaScript framework: Jester:  ActiveResource for Prototype">jester javascript library</a>
 	
 	Right now the div looks like this: <br/>
@@ -50,9 +55,9 @@
 	
 	<div id="log"></div>
 	<script type="text/javascript" charset="utf-8">
-		Resource.model("Question")
-		Resource.model("Activity")
-		
+		Resource.model("Question");
+		Resource.model("Activity");
+
 		// find classes of type '.activity' 
 		// and then dynamically load them as ActiveResources
 		function load_stubs() {
