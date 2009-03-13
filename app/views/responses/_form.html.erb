@@ -1,0 +1,15 @@
+<% form_for(@response) do |f| %>
+  <%= f.error_messages %>
+
+  <p>
+	<%= f.label :response_text, "response_text" %>
+	<%= f.text_field :response_text %>
+	<hr/>
+	<%= f.label :question_id, "question_id" %> <br/>
+	<%= f.text_field :question_id %>
+	<%= f.submit "Update" %>
+	
+	
+	<!-- %= collection_select(:owner, :id, @owners, :id, :name, options = {}, html_options = {}) % -->
+  </p> 
+<% end %>
