@@ -10,6 +10,8 @@
 	tinymce.PluginManager.requireLangPack('question');
 
 	tinymce.create('tinymce.plugins.QuestionPlugin', {
+	  
+		
 		/**
 		 * Initializes the plugin, this will be executed after the plugin has been created.
 		 * This call is done before the editor instance has finished it's initialization so use the onInit event
@@ -19,6 +21,9 @@
 		 * @param {string} url Absolute URL to where the plugin is located.
 		 */
 		init : function(ed, url) {
+		  var t = this;
+			t.editor = ed;
+			
 			// Register the command so that it can be invoked by using tinyMCE.activeEditor.execCommand('mceQuestion');
 			ed.addCommand('mceQuestion', function() {
 				ed.windowManager.open({
@@ -31,6 +36,10 @@
 					some_custom_arg : 'custom arg' // Custom argument
 				});
 			});
+			
+			function isQuestionElm(n) {
+				return /^(otjsonquestion)$/.test(n.className);
+			};
 
 			// Register question button
 			ed.addButton('question', {
