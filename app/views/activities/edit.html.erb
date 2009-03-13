@@ -1,48 +1,8 @@
-<% javascript_include_tag :all %>
-<script type="text/javascript" src="/javascripts/tiny_mce/tiny_mce.js"></script>
-<script type="text/javascript">
-tinyMCE.init({
-	mode : "textareas",
-	// theme_advanced_buttons1 : 'example,..',
-	//    setup : function(ed) {
-	//       // Register example button
-	//       ed.addButton('example', {
-	//          title : 'example.desc',
-	//          image : '/javascripts/tiny_mce/plugins/example/img/example.gif',
-	//          onclick : function() {
-	//             ed.windowManager.alert('Hello world!! Selection: ' + ed.selection.getContent({format : 'text'}));
-	//          }
-	//       });
-	//    }
-
-});
-</script>
 
 <h1>Editing activity <% @activity.name %> </h1>
 
-<%= image_tag "piper_64x64.jpg" %>
+<%= render :partial => 'form' %>
 
-<div class="new_question" id="1234567890">add question</div>
-<%= draggable_element("1234567890", :ghosting=>true, :revert=>true) %>
-
-<% form_for(@activity) do |f| %>
-  <%= f.error_messages %>
-
-  <p>
-	<big><%= @activity.uuid %> </br></big><br/>
-	<%= f.label :name, "name" %>
-	<%= f.text_field :name %>
-	<hr/>
-	<%= f.label :xhtml, "Xhtml" %> <br/>
-	
-	<%= f.text_area :xhtml, :class => @activity.css_class_edit, :id => @activity.css_id %> <br/>
-	<div class="xhtml" id="<%=@activity.uuid%>">
-	<%= f.submit "Update" %>
-	
-	
-	<!-- %= collection_select(:owner, :id, @owners, :id, :name, options = {}, html_options = {}) % -->
-  </p> 
-<% end %>
 <br/>
 <hr/>
 <%= link_to 'Show',  @activity %> |

@@ -1,0 +1,19 @@
+
+<% form_for(@activity) do |f| %>
+  <%= f.error_messages %>
+
+  <p>
+	<small><%= @activity.uuid %></small><br/>
+	<hr/>
+	<%= f.label :name, "Activity Name: " %>
+	<%= f.text_field :name %><br/>
+	<br/>
+	<%= f.label :xhtml, "Please enter the activity text and questions below" %> <br/>
+	<%= f.text_area :xhtml, :class => @activity.css_class_edit, :id => @activity.css_id, :rows => 20, :cols => 100 %> <br/>
+	<div class="xhtml" id="<%=@activity.uuid%>">
+	<%= f.submit "Update" %>
+	
+	
+	<!-- %= collection_select(:owner, :id, @owners, :id, :name, options = {}, html_options = {}) % -->
+  </p> 
+<% end %>

@@ -1,0 +1,16 @@
+<% form_for(@question) do |f| %>
+  <%= f.error_messages %>
+
+  <p>
+	<big><%= @question.uuid %> </br></big><br/>
+	<%= f.label :prompt, "prompt" %>
+	<%= f.text_field :prompt %>
+	<hr/>
+	<%= f.label :default_response, "default_response" %> <br/>
+	<%= f.text_field :default_response %>
+	<%= f.submit "Update" %>
+	
+	
+	<!-- %= collection_select(:owner, :id, @owners, :id, :name, options = {}, html_options = {}) % -->
+  </p> 
+<% end %>
