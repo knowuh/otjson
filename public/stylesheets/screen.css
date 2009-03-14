@@ -12,6 +12,13 @@
   border-color: gray;
   background-color: #CCCCCC;
 }
+.question_edit_button {
+  display: block;
+  border-style: dashed;
+  border-width: 1px;
+  border-color: gray;
+  background-color: #CCCCCC;
+}
 .prompt {
 	background-color: #FFDDDD;
 }

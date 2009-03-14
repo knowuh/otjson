@@ -10,6 +10,10 @@
 	tinymce.PluginManager.requireLangPack('question');
 
 	tinymce.create('tinymce.plugins.QuestionPlugin', {
+<<<<<<< Updated upstream:public/javascripts/tiny_mce/plugins/question/editor_plugin.js
+=======
+		
+>>>>>>> Stashed changes:public/javascripts/tiny_mce/plugins/question/editor_plugin.js
 		/**
 		 * Initializes the plugin, this will be executed after the plugin has been created.
 		 * This call is done before the editor instance has finished it's initialization so use the onInit event
@@ -28,9 +32,14 @@
 					inline : 1
 				}, {
 					plugin_url : url, // Plugin absolute URL
-					some_custom_arg : 'custom arg' // Custom argument
+					prompt : 'why',
+					default_response : 'because'
 				});
 			});
+			
+			function isQuestionElm(n) {
+				return /^(question_edit_button)$/.test(n.className);
+			};
 
 			// Register question button
 			ed.addButton('question', {
@@ -40,8 +49,31 @@
 			});
 
 			// Add a node change handler, selects the button in the UI when a image is selected
-			ed.onNodeChange.add(function(ed, cm, n) {
-				cm.setActive('question', n.nodeName == 'IMG');
+			ed.onNodeChange.add(function(ed, cm, n, o) {
+				cm.setActive('question', isQuestionElm(n));
+			});
+			
+			ed.onKeyUp.add(function(ed, e) {
+				console.debug('Key up event: ' + e.keyCode);
+				console.debug('key up event: ' + e.element().class_name);
+			});
+			
+			ed.onDblClick.add(function(ed, e) {
+				console.log('Double click event: ' + e.target.className);
+				// TODO: put filter filter 
+				if (isQuestionElm(e.target)) {	
+					question = Question.find(e.target.id);
+					ed.windowManager.open({
+						file : url + '/dialog.htm',
+						width : 320 + parseInt(ed.getLang('question.delta_width', 0)),
+						height : 140 + parseInt(ed.getLang('question.delta_height', 0)),
+						inline : 1
+					}, {
+						plugin_url : url, // Plugin absolute URL
+						prompt : question.prompt,
+						default_response : question.default_response
+					});
+				}
 			});
 			
 			ed.onInit.add(function() {
