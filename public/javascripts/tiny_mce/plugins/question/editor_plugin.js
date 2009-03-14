@@ -33,8 +33,8 @@
 					inline : 1
 				}, {
 					plugin_url : url, // Plugin absolute URL
-					prompt : params.prompt,
-					default_response : params.default_response
+					// prompt : params.prompt,
+					// default_response : params.default_response
 				});
 			});
 			
@@ -67,7 +67,7 @@
 				ed.windowManager.open({
 					file : url + '/dialog.htm',
 					width : 320 + parseInt(ed.getLang('question.delta_width', 0)),
-					height : 120 + parseInt(ed.getLang('question.delta_height', 0)),
+					height : 140 + parseInt(ed.getLang('question.delta_height', 0)),
 					inline : 1
 				}, {
 					plugin_url : url, // Plugin absolute URL
